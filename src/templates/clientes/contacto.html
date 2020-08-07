@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>contacto</title>
+    </head>
+    <body>
+        <h3>Consultas </h3>
+        <form action="#" method="POST">
+            {% csrf_token %}
+            <label>Usuario</label>
+            <input type="text" name="user" placeholder="Su usuario"><br>
+            <label>Doctor</label>
+            <input type="text" name="doctor" placeholder="doctor"><br>
+            <label>consulta</label>
+            <textarea name="message" cols="20" rows="7"  placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" required></textarea>
+             <input type="submit" value="Enviar">
+         </form>
+     </body>
+</html>
+    

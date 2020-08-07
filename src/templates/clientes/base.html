@@ -1,0 +1,61 @@
+{% load static %}
+{% static "img/team" as baseUrl %}
+<!-- est es para una prueba luego lo borras -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <title>HistoriasClinicas</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{% static 'img/favicon.png' %}" type="{% static 'image/png' %}">
+    <title>Medcare Medical</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/animate-css/animate.css' %}">
+    <!-- main css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+</head>
+    <!--================Header Menu Area =================-->
+    <header class="header_area">
+        <div class="top_menu row m0">
+            <div class="container">
+                <div class="float-left">
+                    <a class="dn_btn" href="mailto:medical@example.com"><i class="ti-email"></i>medical@example.com</a>
+                    <span class="dn_btn"> <i class="ti-location-pin"></i>Find our Location</span>
+                </div>
+                <div class="float-right">
+                    <ul class="list header_social">
+                        <li><a href="#"><i class="ti-facebook"></i></a></li>
+                        <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
+                        <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                        <li><a href="#"><i class="ti-skype"></i></a></li>
+                        <li><a href="#"><i class="ti-vimeo-alt"></i></a></li>
+                    </ul>	
+                </div>
+            </div>	
+        </div>
+        <br>	
+<center>
+    
+    <ul id="header_base">
+        <li><a href="logout">Cerrar Sesion</a></li>
+        <li><a href="">Medicos</a></li>
+        <li><a href="">Mis recetas</a></li>
+        <li><a href="perfiles">Datos Personales</a></li>
+        <li><a href="contacto">Nueva consulta</a></li>
+    </ul>
+    {% block content %}
+    <h2>Bienvenido paciente {{user.first_name}}</h2>
+    <h2>{{user.id}}</h2>
+    {% endblock %}
+</center>
+</header>
+
+</html>

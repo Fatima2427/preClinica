@@ -1,0 +1,54 @@
+
+{% extends 'clientes/rutaMedico.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+
+<style>
+table {     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 12px;    margin: 45px;     width: 480px; text-align: left;    border-collapse: collapse; }
+
+th {     font-size: 13px;     font-weight: normal;     padding: 8px;     background: #b9c9fe;
+    border-top: 4px solid #aabcfe;    border-bottom: 1px solid #fff; color: #039; }
+
+td {    padding: 8px;     background: #e8edff;     border-bottom: 1px solid #fff;
+    color: #669;    border-top: 1px solid transparent; }
+
+tr:hover td { background: #d0dafd; color: #339; }
+</style>
+<table class="table">
+
+    <tr>  
+      <th>Nombre</th>
+  
+      <th>Apellido</th>
+
+      <th>Ultimo inicio</th>
+
+      <th>Dni</th>
+
+      <th>Correo</th>
+
+      <th></th>
+      <th></th>
+  
+    </tr>
+    {% for medic in medico %}
+    <tr>
+  
+      <td>{{medic.user.first_name}}</td>
+  
+      <td>{{medic.user.last_name}}</td>
+       <td>{{medic.user.date_joined}}</td>
+  
+      <td>{{medic.dni}}</td>
+
+      <td>{{medic.user.email}}</td>
+      <td><a href="mi_pdf">Imprimir</a></td>
+      <td><a href="perfiles">ver</a></td>
+  
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

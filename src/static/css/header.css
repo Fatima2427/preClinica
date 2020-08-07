@@ -1,0 +1,20 @@
+#header_base li a {
+    font-family: Arial;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 10px;
+    background-color: #2175bc;
+    color: #fff;
+    }
+#header_base li a:hover {
+    background-color: #2586d7;
+    margin-top: -2;
+    padding-bottom: 12px;
+}
+ #header_base {
+    padding: 0;
+    position:center;
+    }   
+#header_base li {
+    display: inline;
+    }

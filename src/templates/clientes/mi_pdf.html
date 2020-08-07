@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> Historia clinica</title>
+    </head>
+    <body>
+    {% block content %}
+    <h1>Nombre: {{objeto.user.first_name}}</h1>
+    <h2>Apellido: {{objeto.user.last_name}}</h2>
+    <h2>Usuario: {{objeto.user.username}}</h2>    
+    <h2>Correo: {{objeto.user.email}}</h2>   
+    <h2>DNI: {{objeto.dni}}</h2> 
+    <h2>Genero: {{objeto.genero}}</h2> 
+    <h2>Fecha de nacimiento {{objeto.fecha_nacimiento}}</h2> 
+    <h2>Edad : {{objeto.edad}} años</h2> 
+    <h2>Telefono: {{objeto.telefono}}</h2> 
+    <h2>Direccion: {{objeto.direccion}}</h2> 
+    {% endblock %}
+    </body>
+</html>

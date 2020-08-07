@@ -1,0 +1,14 @@
+{% extends 'clientes/base.html' %}
+{% block content %}
+<a href="../mi_pdf">Imprimir</a>
+<h1>{{objeto.user.first_name}}</h1>
+<h2>{{objeto.user.last_name}}</h2>
+<h2>{{objeto.user.username}}</h2>    
+<h2>{{objeto.user.email}}</h2>   
+<h2>{{objeto.dni}}</h2> 
+<h2>{{objeto.genero}}</h2> 
+<h2>{{objeto.fecha_nacimiento}}</h2> 
+<h2>{{objeto.edad}} años</h2> 
+<h2>{{objeto.telefono}}</h2> 
+<h2>{{objeto.direccion}}</h2> 
+{% endblock %}
