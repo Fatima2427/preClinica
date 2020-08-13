@@ -2,8 +2,10 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from .forms import FormPaciente, FormMedico
-from clientes.models import Paciente, Medico
+from medicos.forms import FormMedico
+from clientes.models import Paciente
+from clientes.models import Paciente
+from medicos.models import Doctor
 from django.views.generic import View
 from clinica.utileria import render_pdf
 from django.http import HttpResponse
@@ -56,24 +58,6 @@ def login(request):
 	else:
 		return render(request, 'clientes/login.html')
 		print('fallo')
-def logeoMedico(request):
-	if request.method=='POST':
-		username=request.POST['username']
-		password=request.POST['password']
-
-		user= auth.authenticate(username=username,password=password) 
-		if user is not None:
-			auth.login(request, user)
-			return redirect('MedicoRuta')
-			
-		else:
-			messages.info(request,'invalid credentials')
-			print('fallo datos')
-			return redirect('logeoMedico')
-			
-	else:
-		return render(request, 'clientes/logeo.html')
-
 
 def register(request):
 	paciente_form=FormPaciente()
@@ -112,43 +96,6 @@ def register(request):
 	else:
 		context={'paciente_form':paciente_form}
 		return render(request, 'clientes/register.html', context)
-def registroMedic(request):
-	medico_form=FormMedico()
-	if request.method =='POST':
-		first_name=request.POST['first_name']
-		last_name=request.POST['last_name']
-		username=request.POST['username']
-		password1=request.POST['password1']
-		password2=request.POST['password2']
-		email=request.POST['email']
-		medico_form=FormMedico(request.POST)
-
-		if password1==password2:
-			if User.objects.filter(username=username).exists():
-				messages.info(request, 'Username taken')
-				print('falso')
-				return redirect('registroMedic')
-			elif User.objects.filter(email=email).exists():
-				messages.info(request, 'email taken')
-				print('repetido')
-				return redirect('registroMedic')
-			else:
-				if medico_form.is_valid():
-					user = User.objects.create_user(username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
-					profile=medico_form.save(commit=False)
-					profile.user=user
-					profile.save()
-					user.save()
-					print('user created')
-					return redirect('logeoMedico')
-		
-		else:
-			print('password not maching..')
-			return redirect('registroMedic')
-		return redirect('/')
-	else:
-		context={'medico_form':medico_form}
-		return render(request, 'clientes/Medic.html', context)
 
 def logout(request):
 	auth.logout(request)
@@ -156,21 +103,12 @@ def logout(request):
 def base(request):
 	return render(request, 'clientes/base.html')
 
-def MedicoRuta(request):
-	return render(request, 'clientes/rutaMedico.html')
-def mostrar	(request):
-
-	medico =Paciente.objects.all()
-	
-	return render(request , 'clientes/pacientes.html', {'medico' : medico})
 def perfiles(request):
     obj =Paciente.objects.get(user_id=6)
     context={ 'objeto': obj, }
     return render(request, 'clientes/perfil.html', context)
 def eleccion(request):
 	return render(request, 'clientes/eleccion.html')
-def contacto(request):
-	return render(request, 'clientes/contacto.html')
 class imprimir(View):
 	def get(self , request, *args, **kwargs):
 		obj=Paciente.objects.get(user_id=6)
